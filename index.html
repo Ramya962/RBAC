@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">    
+</head>
+<body>
+    <header>
+        <h1>Role-Based Access Control (RBAC)</h1>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="users">Users</div>
+            <div class="tab" data-tab="roles">Roles</div>
+            <div class="tab" data-tab="permissions">Permissions</div>
+        </div>
+
+        <div id="users" class="tab-content active">
+            <h2>Manage Users</h2>
+            <button class="btn" onclick="showUserForm()">Add User</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list">
+                    <!-- Dynamic Rows -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="roles" class="tab-content">
+            <h2>Manage Roles</h2>
+            <button class="btn" onclick="showRoleForm()">Add Role</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Role Name</th>
+                        <th>Permissions</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="role-list">
+                    <!-- Dynamic Rows -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="permissions" class="tab-content">
+            <h2>Manage Permissions</h2>
+            <button class="btn" onclick="showPermissionForm()">Add Permission</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Permission Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="permission-list">
+                    <!-- Dynamic Rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<!-- Modal Templates -->
+<div id="userModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Add User</div>
+        <div class="form-group">
+            <label for="userId">ID</label>
+            <input type="text" id="userId" />
+        </div>
+        <div class="form-group">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" />
+        </div>
+        <div class="form-group">
+            <label for="userRole">Role</label>
+            <input type="text" id="userRole" />
+        </div>
+        <div class="form-group">
+            <label for="userStatus">Status</label>
+            <input type="text" id="userStatus" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn" onclick="addUser()">Save</button>
+            <button class="btn delete" onclick="closeModal('userModal')">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="roleModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Add Role</div>
+        <div class="form-group">
+            <label for="roleName">Role Name</label>
+            <input type="text" id="roleName" />
+        </div>
+        <div class="form-group">
+            <label for="rolePermissions">Permissions</label>
+            <input type="text" id="rolePermissions" placeholder="Comma-separated values" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn" onclick="addRole()">Save</button>
+            <button class="btn delete" onclick="closeModal('roleModal')">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="permissionModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Add Permission</div>
+        <div class="form-group">
+            <label for="permissionName">Permission Name</label>
+            <input type="text" id="permissionName" />
+        </div>
+        <div class="form-group">
+            <label for="permissionDescription">Description</label>
+            <input type="text" id="permissionDescription" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn" onclick="addPermission()">Save</button>
+            <button class="btn delete" onclick="closeModal('permissionModal')">Cancel</button>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

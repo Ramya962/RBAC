@@ -1,0 +1,250 @@
+:root {
+    --primary-color: #3498db; /* Soft Blue */
+    --secondary-color: #ecf0f1; /* Light Gray */
+    --accent-color: #9b59b6; /* Soft Purple */
+    --text-color: #2c3e50; /* Dark Gray */
+    --border-color: #bdc3c7; /* Light Gray Border */
+    --btn-edit-color: #f39c12; /* Golden Yellow */
+    --btn-delete-color: #e74c3c; /* Red */
+    --modal-bg-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white for modals */
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, var(--secondary-color), #ffffff);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    /* border-radius: 10px; */
+    box-shadow: 0px 4px 8px var(--shadow-color);
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    transition: transform 0.3s ease;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin: 0 5px;
+    font-weight: bold;
+    color: var(--text-color);
+    box-shadow: 0px 2px 4px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.08); /* Slight zoom */
+    box-shadow: 0px 4px 8px var(--shadow-color);
+}
+
+.tab:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px var(--shadow-color);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.table th, .table td {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.table th {
+    background: var(--primary-color);
+    color: white;
+    text-transform: uppercase;
+}
+
+.btn {
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: none;
+    color: white;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px var(--shadow-color);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn.edit {
+    background: var(--btn-edit-color);
+}
+
+.btn.delete {
+    background: var(--btn-delete-color);
+}
+
+.btn:hover {
+    background: var(--accent-color);
+    transform: scale(1.1);
+    box-shadow: 0px 6px 10px var(--shadow-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0px 4px 8px var(--shadow-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--modal-bg-color);
+    padding: 25px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0px 6px 12px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.modal-header {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.modal-footer {
+    text-align: right;
+}
+
+.modal-footer .btn {
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .table th, .table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        font-size: 1.2em;
+        padding: 15px;
+    }
+
+    .tab {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .table th, .table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 12px;
+    }
+}
